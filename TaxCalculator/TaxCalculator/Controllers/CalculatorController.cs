@@ -9,10 +9,10 @@ namespace TaxCalculator.Controllers
     [Route("calculator")]
     public class CalculatorController : ControllerBase
     {
-        private readonly ICalculatorService _calculatorService;
+        private readonly ICalculationService _calculatorService;
         private readonly ILogger _logger;
 
-        public CalculatorController(ICalculatorService calculatorService, ILogger<CalculatorController> logger)
+        public CalculatorController(ICalculationService calculatorService, ILogger<CalculatorController> logger)
         {
             _calculatorService = calculatorService;
             _logger = logger;

@@ -12,6 +12,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using TaxCalculator.BusinessLogic.DependencyInjection;
+using TaxCalculator.Middlewares.ExceptionHandler;
 
 namespace TaxCalculator
 {
@@ -39,13 +40,14 @@ namespace TaxCalculator
             services.AddControllers();
         }
 
-        public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
+        public void Configure(IApplicationBuilder app, IWebHostEnvironment env, ILogger<Startup> logger)
         {
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
             }
 
+            app.ConfigureExceptionHandler(logger);
             app.UseHttpsRedirection();
             app.UseRouting();
             app.UseAuthorization();

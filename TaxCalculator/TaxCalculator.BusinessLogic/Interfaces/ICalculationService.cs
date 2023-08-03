@@ -3,7 +3,7 @@ using TaxCalculator.BusinessLogic.DataTransferObjects;
 
 namespace TaxCalculator.BusinessLogic.Interfaces
 {
-    public interface ICalculatorService
+    public interface ICalculationService
     {
         Task<CalculationResultDto> CalculateTaxesAsync(int totalSalary);
     }

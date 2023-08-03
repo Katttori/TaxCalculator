@@ -4,14 +4,14 @@
     {
         public int GrossAnnualSalary { get; set; }
 
-        public float GrossMonthlySalary { get; set; }
+        public double GrossMonthlySalary { get; set; }
 
-        public float NetAnnualSalary { get; set; }
+        public double NetAnnualSalary { get; set; }
 
-        public float NetMonthlySalary { get; set; }
+        public double NetMonthlySalary { get; set; }
 
-        public float AnnualTaxPaid { get; set; }
+        public double AnnualTaxPaid { get; set; }
 
-        public float MonthlyTaxPaid { get; set; }
+        public double MonthlyTaxPaid { get; set; }
     }
 }

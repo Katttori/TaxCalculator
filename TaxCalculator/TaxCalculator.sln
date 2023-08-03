@@ -3,15 +3,22 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.4.33213.308
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TaxCalculator", "TaxCalculator\TaxCalculator.csproj", "{9A5042A8-3B98-4472-A0C2-D776ED14E5B9}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TaxCalculator", "TaxCalculator\TaxCalculator.csproj", "{9A5042A8-3B98-4472-A0C2-D776ED14E5B9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TaxCalculator.Entities", "TaxCalculator.Entities\TaxCalculator.Entities.csproj", "{7922D72E-A12B-44C0-953B-2DE5C3D27C79}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TaxCalculator.Entities", "TaxCalculator.Entities\TaxCalculator.Entities.csproj", "{7922D72E-A12B-44C0-953B-2DE5C3D27C79}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TaxCalculator.BusinessLogic", "TaxCalculator.BusinessLogic\TaxCalculator.BusinessLogic.csproj", "{607CFC27-5EF2-4C40-8A86-DD2861FFA9C0}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TaxCalculator.BusinessLogic", "TaxCalculator.BusinessLogic\TaxCalculator.BusinessLogic.csproj", "{607CFC27-5EF2-4C40-8A86-DD2861FFA9C0}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TaxCalculator.DataAccess", "TaxCalculator.DataAccess\TaxCalculator.DataAccess.csproj", "{4CE4F34C-682A-4FE2-91B6-3FF706247811}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TaxCalculator.DataAccess", "TaxCalculator.DataAccess\TaxCalculator.DataAccess.csproj", "{4CE4F34C-682A-4FE2-91B6-3FF706247811}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TaxCalculator.Configuration.Extensions", "TaxCalculator.Configuration.Extensions\TaxCalculator.Configuration.Extensions.csproj", "{81A646F3-B719-46B7-82AD-E54FE807B05E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TaxCalculator.Configuration.Extensions", "TaxCalculator.Configuration.Extensions\TaxCalculator.Configuration.Extensions.csproj", "{81A646F3-B719-46B7-82AD-E54FE807B05E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TaxCalculator.Tests", "TaxCalculator.Tests\TaxCalculator.Tests.csproj", "{46CED210-159A-4037-9B21-241B6775AC20}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{0D0814C2-477D-4928-842C-75D3F22F30CA}"
+	ProjectSection(SolutionItems) = preProject
+		Directory.Build.props = Directory.Build.props
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -39,6 +46,10 @@ Global
 		{81A646F3-B719-46B7-82AD-E54FE807B05E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{81A646F3-B719-46B7-82AD-E54FE807B05E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{81A646F3-B719-46B7-82AD-E54FE807B05E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{46CED210-159A-4037-9B21-241B6775AC20}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{46CED210-159A-4037-9B21-241B6775AC20}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{46CED210-159A-4037-9B21-241B6775AC20}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{46CED210-159A-4037-9B21-241B6775AC20}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

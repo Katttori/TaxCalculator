@@ -18,7 +18,7 @@ namespace TaxCalculator.BusinessLogic.DependencyInjection
             services.AddUnitOfWork(connectionStrings);
             services.AddAutoMapper(typeof(ServiceCollectionExtensions));
             services.AddScoped<ITaxBandService, TaxBandService>();
-            services.AddScoped<ICalculatorService, CalculatorService>();
+            services.AddScoped<ICalculationService, CalculationService>();
         }
     }
 }
