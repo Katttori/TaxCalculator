@@ -8,7 +8,7 @@ using TaxCalculator.BusinessLogic.Interfaces;
 namespace TaxCalculator.Controllers
 {
     [ApiController]
-    [Route("tax-band")]
+    [Route("api/tax-band")]
     public class TaxBandController : ControllerBase
     {
         private readonly ITaxBandService _taxBandService;

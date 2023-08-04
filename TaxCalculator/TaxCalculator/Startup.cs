@@ -11,6 +11,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using TaxCalculator.BusinessLogic.Configuration;
 using TaxCalculator.BusinessLogic.DependencyInjection;
 using TaxCalculator.Middlewares.ExceptionHandler;
 
@@ -40,12 +41,22 @@ namespace TaxCalculator
             services.AddControllers();
         }
 
-        public void Configure(IApplicationBuilder app, IWebHostEnvironment env, ILogger<Startup> logger)
+        public void Configure(
+            IApplicationBuilder app,
+            IWebHostEnvironment env,
+            ILogger<Startup> logger,
+            GeneralSettings generalSettings)
         {
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
             }
+
+            app.UseCors(config => config
+                    .WithOrigins(generalSettings.ClientSideUrl.Trim('/'))
+                    .AllowAnyHeader()
+                    .AllowAnyMethod()
+                    .AllowCredentials());
 
             app.ConfigureExceptionHandler(logger);
             app.UseHttpsRedirection();

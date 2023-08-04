@@ -6,8 +6,8 @@ namespace TaxCalculator.BusinessLogic.DataTransferObjects
 {
     internal class Calculation
     {
-        public double RemainingSalary { get; set; }
+        public decimal RemainingSalary { get; set; }
 
-        public double Taxes { get; set; }
+        public decimal Taxes { get; set; }
     }
 }

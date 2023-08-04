@@ -1,5 +1,6 @@
 ﻿using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using TaxCalculator.BusinessLogic.Configuration;
 using TaxCalculator.BusinessLogic.Interfaces;
 using TaxCalculator.BusinessLogic.Services;
 using TaxCalculator.Configuration.Extensions;
@@ -14,6 +15,7 @@ namespace TaxCalculator.BusinessLogic.DependencyInjection
             this IServiceCollection services,
             IConfiguration configuration)
         {
+            services.AddSettings<GeneralSettings>(configuration);
             var connectionStrings = services.AddSettings<ConnectionStrings>(configuration);
             services.AddUnitOfWork(connectionStrings);
             services.AddAutoMapper(typeof(ServiceCollectionExtensions));

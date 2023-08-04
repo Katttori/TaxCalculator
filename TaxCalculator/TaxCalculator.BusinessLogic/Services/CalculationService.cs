@@ -10,6 +10,7 @@ namespace TaxCalculator.BusinessLogic.Services
 {
     internal class CalculationService : ICalculationService
     {
+        private int monthCount = 12;
         private readonly ITaxBandService _taxBandService;
 
         public CalculationService(ITaxBandService taxBandService)
@@ -32,21 +33,21 @@ namespace TaxCalculator.BusinessLogic.Services
                 calculation = CalculateTaxBand(calculation, taxBand);
             }
 
-            var netAnnualSalary = (double)totalSalary - calculation.Taxes;
+            var netAnnualSalary = (decimal)totalSalary - calculation.Taxes;
             return new CalculationResultDto
             {
                 GrossAnnualSalary = totalSalary,
-                GrossMonthlySalary = Round((double)totalSalary / 12),
+                GrossMonthlySalary = Round((decimal)totalSalary / monthCount),
                 NetAnnualSalary = Round(netAnnualSalary),
-                NetMonthlySalary = Round(netAnnualSalary / 12),
+                NetMonthlySalary = Round(netAnnualSalary / monthCount),
                 AnnualTaxPaid = Round(calculation.Taxes),
-                MonthlyTaxPaid = Round(calculation.Taxes / 12),
+                MonthlyTaxPaid = Round(calculation.Taxes / monthCount),
             };
         }
 
         private Calculation CalculateTaxBand(Calculation calculation, TaxBandDto taxBand)
         {
-            double remainingSalary;
+            decimal remainingSalary;
 
             if (taxBand.UpperLimit != null && calculation.RemainingSalary > taxBand.UpperLimit)
             {
@@ -59,12 +60,12 @@ namespace TaxCalculator.BusinessLogic.Services
                 calculation.RemainingSalary = 0;
             }
 
-            calculation.Taxes += remainingSalary * ((double)taxBand.TaxRate / 100);
+            calculation.Taxes += remainingSalary * ((decimal)taxBand.TaxRate / 100);
 
             return calculation;
         }
 
-        private double Round(double value)
+        private decimal Round(decimal value)
         {
             return Math.Round(value, 2);
         }

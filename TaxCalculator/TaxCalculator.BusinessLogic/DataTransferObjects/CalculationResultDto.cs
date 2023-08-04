@@ -2,16 +2,16 @@
 {
     public class CalculationResultDto
     {
-        public int GrossAnnualSalary { get; set; }
+        public decimal GrossAnnualSalary { get; set; }
 
-        public double GrossMonthlySalary { get; set; }
+        public decimal GrossMonthlySalary { get; set; }
 
-        public double NetAnnualSalary { get; set; }
+        public decimal NetAnnualSalary { get; set; }
 
-        public double NetMonthlySalary { get; set; }
+        public decimal NetMonthlySalary { get; set; }
 
-        public double AnnualTaxPaid { get; set; }
+        public decimal AnnualTaxPaid { get; set; }
 
-        public double MonthlyTaxPaid { get; set; }
+        public decimal MonthlyTaxPaid { get; set; }
     }
 }

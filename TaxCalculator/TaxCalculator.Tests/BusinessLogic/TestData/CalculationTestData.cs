@@ -16,9 +16,9 @@ namespace TaxCalculator.Tests.BusinessLogic.TestData
                 new CalculationResultDto 
                 {
                     GrossAnnualSalary = 1000,
-                    GrossMonthlySalary = 83.33,
+                    GrossMonthlySalary = (decimal) 83.33,
                     NetAnnualSalary = 1000,
-                    NetMonthlySalary = 83.33,
+                    NetMonthlySalary = (decimal) 83.33,
                     AnnualTaxPaid = 0,
                     MonthlyTaxPaid = 0
                 }
@@ -30,11 +30,11 @@ namespace TaxCalculator.Tests.BusinessLogic.TestData
                 new CalculationResultDto
                 {
                     GrossAnnualSalary = 10000,
-                    GrossMonthlySalary = 833.33,
+                    GrossMonthlySalary = (decimal) 833.33,
                     NetAnnualSalary = 9000,
                     NetMonthlySalary = 750,
                     AnnualTaxPaid = 1000,
-                    MonthlyTaxPaid = 83.33
+                    MonthlyTaxPaid = (decimal) 83.33
                 }
             };
 
@@ -44,9 +44,9 @@ namespace TaxCalculator.Tests.BusinessLogic.TestData
                 new CalculationResultDto
                 {
                     GrossAnnualSalary = 50000,
-                    GrossMonthlySalary = 4166.67,
+                    GrossMonthlySalary = (decimal) 4166.67,
                     NetAnnualSalary = 35000,
-                    NetMonthlySalary = 2916.67,
+                    NetMonthlySalary = (decimal) 2916.67,
                     AnnualTaxPaid = 15000,
                     MonthlyTaxPaid = 1250
                 }

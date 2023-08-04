@@ -6,13 +6,13 @@ using TaxCalculator.BusinessLogic.Interfaces;
 namespace TaxCalculator.Controllers
 {
     [ApiController]
-    [Route("calculator")]
-    public class CalculatorController : ControllerBase
+    [Route("api/calculation")]
+    public class CalculationController : ControllerBase
     {
         private readonly ICalculationService _calculatorService;
         private readonly ILogger _logger;
 
-        public CalculatorController(ICalculationService calculatorService, ILogger<CalculatorController> logger)
+        public CalculationController(ICalculationService calculatorService, ILogger<CalculationController> logger)
         {
             _calculatorService = calculatorService;
             _logger = logger;

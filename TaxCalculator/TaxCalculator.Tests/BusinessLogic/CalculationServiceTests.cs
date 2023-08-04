@@ -27,10 +27,13 @@ namespace TaxCalculator.Tests.BusinessLogic
         [ClassData(typeof(CalculationTestData))]
         public async Task CalculateTaxesAsync_WithValidData_ReturnsCalculationResult(int income, CalculationResultDto expectedResult)
         {
+            //Arrange
             A.CallTo(() => _taxBandServiceMock.GetTaxBandsAsync()).Returns(TaxBandHelper.GetTaxBands());
 
+            //Act
             var actualResult = await _sut.CalculateTaxesAsync(income);
 
+            //Assert
             actualResult.Should().BeEquivalentTo(expectedResult);
         }
     }
