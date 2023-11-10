@@ -1,7 +1,9 @@
-﻿using System;
+﻿using Microsoft.Extensions.Logging;
+using System;
 using System.Linq;
 using System.Threading.Tasks;
 using TaxCalculator.BusinessLogic.DataTransferObjects;
+using TaxCalculator.BusinessLogic.Extensions;
 using TaxCalculator.BusinessLogic.Interfaces;
 
 namespace TaxCalculator.BusinessLogic.Services
@@ -10,16 +12,22 @@ namespace TaxCalculator.BusinessLogic.Services
     {
         private int monthCount = 12;
         private readonly ITaxBandService _taxBandService;
+        private readonly ILogger<CalculationService> _logger;
 
-        public CalculationService(ITaxBandService taxBandService)
+
+        public CalculationService(ITaxBandService taxBandService, ILogger<CalculationService> logger)
         {
             _taxBandService = taxBandService;
+            _logger = logger;
         }
 
-        public async Task<CalculationResultDto> CalculateTaxesAsync(int totalSalary)
+        public async Task<CalculationResultDto> CalculateTaxesAsync(decimal totalSalary)
         {
+            var actualSalary = totalSalary.Round();
+            _logger.LogInformation("Calculation started for {income}", actualSalary);
+
             var taxBands = await _taxBandService.GetTaxBandsAsync();
-            Calculation calculation = new Calculation { RemainingSalary = totalSalary, Taxes = 0 };
+            Calculation calculation = new Calculation { RemainingSalary = actualSalary, Taxes = 0 };
 
             foreach (var taxBand in taxBands.OrderBy(band => band.LowerLimit))
             {
@@ -31,15 +39,15 @@ namespace TaxCalculator.BusinessLogic.Services
                 calculation = CalculateTaxBand(calculation, taxBand);
             }
 
-            var netAnnualSalary = (decimal)totalSalary - calculation.Taxes;
+            var netAnnualSalary = actualSalary - calculation.Taxes;
             return new CalculationResultDto
             {
-                GrossAnnualSalary = totalSalary,
-                GrossMonthlySalary = Round((decimal)totalSalary / monthCount),
-                NetAnnualSalary = Round(netAnnualSalary),
-                NetMonthlySalary = Round(netAnnualSalary / monthCount),
-                AnnualTaxPaid = Round(calculation.Taxes),
-                MonthlyTaxPaid = Round(calculation.Taxes / monthCount),
+                GrossAnnualSalary = actualSalary,
+                GrossMonthlySalary = (actualSalary / monthCount).Round(),
+                NetAnnualSalary = (netAnnualSalary).Round(),
+                NetMonthlySalary = (netAnnualSalary / monthCount).Round(),
+                AnnualTaxPaid = (calculation.Taxes).Round(),
+                MonthlyTaxPaid = (calculation.Taxes / monthCount).Round(),
             };
         }
 
@@ -61,11 +69,6 @@ namespace TaxCalculator.BusinessLogic.Services
             calculation.Taxes += remainingSalary * ((decimal)taxBand.TaxRate / 100);
 
             return calculation;
-        }
-
-        private decimal Round(decimal value)
-        {
-            return Math.Round(value, 2);
         }
     }
 }

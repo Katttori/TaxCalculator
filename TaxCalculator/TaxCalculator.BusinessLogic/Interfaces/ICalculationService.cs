@@ -5,6 +5,6 @@ namespace TaxCalculator.BusinessLogic.Interfaces
 {
     public interface ICalculationService
     {
-        Task<CalculationResultDto> CalculateTaxesAsync(int totalSalary);
+        Task<CalculationResultDto> CalculateTaxesAsync(decimal totalSalary);
     }
 }

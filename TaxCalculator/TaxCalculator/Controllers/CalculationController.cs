@@ -17,9 +17,12 @@ namespace TaxCalculator.Controllers
             _calculatorService = calculatorService;
             _logger = logger;
         }
+
         [HttpGet]
-        public async Task<IActionResult> CalculateTaxes([FromQuery] int income) 
+        public async Task<IActionResult> CalculateTaxes([FromQuery] decimal income) 
         {
+            _logger.BeginScope("Calculation");
+
             var calculationResult = await _calculatorService.CalculateTaxesAsync(income);
             return Ok(calculationResult);
         }
