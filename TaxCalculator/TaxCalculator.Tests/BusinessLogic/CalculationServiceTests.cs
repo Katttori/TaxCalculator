@@ -1,5 +1,7 @@
-﻿using FakeItEasy;
+﻿using Castle.Core.Logging;
+using FakeItEasy;
 using FluentAssertions;
+using Microsoft.Extensions.Logging;
 using System.Threading.Tasks;
 using TaxCalculator.BusinessLogic.DataTransferObjects;
 using TaxCalculator.BusinessLogic.Interfaces;

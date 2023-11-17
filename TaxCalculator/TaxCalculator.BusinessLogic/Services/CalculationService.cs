@@ -12,19 +12,16 @@ namespace TaxCalculator.BusinessLogic.Services
     {
         private int monthCount = 12;
         private readonly ITaxBandService _taxBandService;
-        private readonly ILogger<CalculationService> _logger;
 
 
-        public CalculationService(ITaxBandService taxBandService, ILogger<CalculationService> logger)
+        public CalculationService(ITaxBandService taxBandService)
         {
             _taxBandService = taxBandService;
-            _logger = logger;
         }
 
         public async Task<CalculationResultDto> CalculateTaxesAsync(decimal totalSalary)
         {
             var actualSalary = totalSalary.Round();
-            _logger.LogInformation("Calculation started for {income}", actualSalary);
 
             var taxBands = await _taxBandService.GetTaxBandsAsync();
             Calculation calculation = new Calculation { RemainingSalary = actualSalary, Taxes = 0 };
